@@ -10,7 +10,7 @@
       "code_postal": 54000,
       "code_insee": 8105,
       "ville": "Nancy",
-      "livraison": "Oui",
+      "livraison": "Oui"
     },
     "geometry": {
       "type": "Point",
