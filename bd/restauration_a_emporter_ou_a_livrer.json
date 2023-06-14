@@ -1,7 +1,7 @@
 [
   {
     "fields": {
-      "nom_restaurant": "Strabuck",
+      "nom_restaurant": "Starbucks",
       "geo_point_2d": [
         48.691118, 6.183182
       ],
