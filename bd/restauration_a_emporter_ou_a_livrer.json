@@ -1,6 +1,7 @@
 [
   {
     "fields": {
+      "idResto": 1,
       "nom_restaurant": "Starbucks",
       "geo_point_2d": [
         48.691118, 6.183182
@@ -8,9 +9,7 @@
       "telephone": "03 83 20 42 22",
       "adresse": "13-15 Rue Saint-Georges",
       "code_postal": 54000,
-      "code_insee": 8105,
-      "ville": "Nancy",
-      "livraison": "Oui"
+      "ville": "Nancy"
     },
     "geometry": {
       "type": "Point",
