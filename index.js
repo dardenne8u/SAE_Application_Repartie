@@ -28,9 +28,9 @@ const printStationsStatus = async () => {
     let stations = await velibs.getStationsStatus();
 
     stations.forEach(station => {
-        let marker = markers.filter(marker=>marker.id===station.id)[0];
-        console.log(marker);
-        marker.setContent(marker.getContent()+"<br>Nombre de vélos disponibles : " + station.num_bikes_available+ "<br>Nombre de docks disponibles :" + station.num_docks_available);
+        let marker = markers.filter((marker) => marker.id === station.station_id)[0].marker;
+        let popup = marker.getPopup();
+        popup.setContent(popup.getContent() + `<br>Vélo disponible : ${station.num_bikes_available}<br>Emplacement disponiblee : ${station.num_docks_available}`)
     });
 }
 
