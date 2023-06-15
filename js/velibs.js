@@ -33,7 +33,7 @@ const getStationsStatus = async () => {
     let links = await getLinks();
     links = links.filter(link => link.name === 'station_status');
     let stationsStatus = await fetchData(links[0].url);
-    return stationsStatus
+    return stationsStatus;
 }
 
 export default {

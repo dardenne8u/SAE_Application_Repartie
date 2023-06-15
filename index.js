@@ -25,7 +25,13 @@ const printStationsInformation = async () => {
 }
 
 const printStationsStatus = async () => {
+    let stations = await velibs.getStationsStatus();
 
+    stations.forEach(station => {
+        let marker = Array.find(marker=>marker.id===station.id);
+        marker.setContent(marker.getContent()+"<br>Nombre de vélos disponibles : " + station.num_bikes_available+ "<br>Nombre de docks disponibles :" + station.num_docks_available);
+    });
 }
 
 printStationsInformation()
+    .then(()=>printStationsStatus());
