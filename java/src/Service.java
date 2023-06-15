@@ -12,7 +12,6 @@ public class Service {
 
     public Service(ServiceCentral serviceCentral) {
         this.serviceCentral = serviceCentral;
-        serviceCentral.addService(this);
 
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/SAE", "root", "root");
