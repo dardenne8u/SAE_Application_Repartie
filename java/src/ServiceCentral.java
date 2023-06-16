@@ -1,23 +1,50 @@
-import java.util.ArrayList;
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+import com.sun.net.httpserver.HttpServer;
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class ServiceCentral {
-    List<Service> services;
+public class ServiceCentral implements HttpHandler {
+  private Map<String,Service> services = new HashMap<>();
 
+  @Override
+  public void handle(HttpExchange request) throws IOException {
+    /*
+     * C'est ici qu'on gere les requete http, faut regarder
+     * la documentation de HttpExchange
+     * Pour savoir, mais en gros je pense un switch devra faire l'affaire
+     * ne pas hésiter à déclarer des methodes privees
+     */
 
-    public ServiceCentral() {
-        services = new ArrayList<Service>();
+    // On recupere les headers de la requete
+    for(String s : request.getRequestHeaders().keySet()) {
+      System.out.println(s + " : " + request.getRequestHeaders().get(s));
+    }
+  }
+
+  public static void main(String[] args) {
+    HttpServer server = null;
+    try {
+      // Creation de serveur (c'est pas dit dans la methode sur le port 8080)
+      server = HttpServer.create(new InetSocketAddress(8080), 0);
+    } catch (IOException e) {
+      System.out.println("The port is already used");
+      System.exit(1);
     }
 
-    public void addService(Service service) {
-        services.add(service);
-    }
+    // Ajoute un contexte donc en gros : http://localhost:8080/applications/myapp
+    server.createContext("/applications/myapp", new ServiceCentral());
 
-    public void removeService(Service service) {
-        services.remove(service);
-    }
+    // Et ca on s'en fou
+    server.setExecutor(null);
+    server.start();
+  }
 
-    public List<Service> getServices() {
-        return services;
-    }
+  public void addService(String name, Service service) {
+    services.put(name, service);
+  }
 }

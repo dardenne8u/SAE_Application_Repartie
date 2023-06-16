@@ -6,13 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Service {
-    ServiceCentral serviceCentral;
     Connection con;
     Statement stmt;
+    String name;
 
-    public Service(ServiceCentral serviceCentral) {
-        this.serviceCentral = serviceCentral;
-        serviceCentral.addService(this);
+    public Service(ServiceCentral serviceCentral, String name) {
+        this.name = name;
+        serviceCentral.addService(name,this);
+
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/SAE", "root", "root");
+            stmt = con.createStatement();
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la connexion à la base de données");
+        }
     }
 
     public List<Restaurant> getRestaurants() {
