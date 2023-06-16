@@ -39,8 +39,17 @@ const printStationsStatus = async () => {
 const printCirculationEvents = async () => {
     let circuData = await circulation.getCirculationData();
     console.log(circuData);
+    let LeafIcon = L.Icon.extend({
+        options: {
+            iconSize:     [50, 50],
+            iconAnchor:   [26, 47],
+            popupAnchor:  [0, -50]
+        }
+    });
+    let icone = new LeafIcon({iconUrl: './img/663342.png'});
+
     circuData.forEach(incident => {
-        let marker = L.marker(incident.location.polyline.split(" ")).addTo(map);
+        let marker = L.marker(incident.location.polyline.split(" "), {icon: icone}).addTo(map);
         let start = incident.starttime.split("T")[0];
         let end = incident.endtime.split("T")[0];
         marker.bindPopup(`${incident.location.street}<br>${incident.description}<br>Début incident : ${start}<br>Fin incident : ${end}`);
