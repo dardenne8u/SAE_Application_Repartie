@@ -74,7 +74,7 @@ public class Service {
 
     public static void main(String[] args) {
         ServiceCentral serviceCentral = new ServiceCentral();
-        Service service = new Service(serviceCentral);
+        Service service = new Service(serviceCentral, "Service1");
 
         List<Restaurant> restos = service.getRestaurants();
 
