@@ -43,10 +43,10 @@ const printCirculationEvents = async () => {
         options: {
             iconSize:     [50, 50],
             iconAnchor:   [26, 47],
-            popupAnchor:  [0, -50]
+            popupAnchor:  [0, -45]
         }
     });
-    let icone = new LeafIcon({iconUrl: './img/663342.png'});
+    let icone = new LeafIcon({iconUrl: './img/redicon.png'});
 
     circuData.forEach(incident => {
         let marker = L.marker(incident.location.polyline.split(" "), {icon: icone}).addTo(map);
