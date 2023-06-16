@@ -8,4 +8,12 @@ public class Coordonnees {
         this.latitude = lat;
         this.longitude = lon;
     }
+
+    public double getLatitude(){
+        return this.latitude;
+    }
+
+    public double getLongitude(){
+        return this.longitude;
+    }
 }

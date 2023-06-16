@@ -1,18 +1,20 @@
 package gps;
 
 public abstract class Lieu {
-    private int id;
-    private String nom;
-    private Coordonnees coordonnees;
-    private int codePostal;
-    private String adresse;
+    protected int id;
+    protected String nom;
+    protected Coordonnees coordonnees;
+    protected int codePostal;
+    protected String adresse;
+    protected String ville;
 
-    public Lieu(int id, String nom, Coordonnees coordonnees, int codePostal, String adresse) {
+    public Lieu(int id, String nom, Coordonnees coordonnees, int codePostal, String adresse, String ville) {
         this.id = id;
         this.nom = nom;
         this.coordonnees = coordonnees;
         this.codePostal = codePostal;
         this.adresse = adresse;
+        this.ville = ville;
     }
 
     //getters
@@ -40,4 +42,6 @@ public abstract class Lieu {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    abstract public String toJSON();
 }
