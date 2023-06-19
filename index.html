@@ -7,15 +7,33 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossorigin=""/>
+    <link rel="stylesheet" href="css/global.css"/>
 </head>
 <body>
-<div id="map" style="height: 900px">
+    <div class="topnav">
+        <a class="active" href="#map">La map</a>
+        <a href="#apropos">A propos de la SAE...</a>
+    </div>
+    <h3>La map</h3>
+    <div id="map">
 
-</div>
+    </div>
+    <div id="apropos">
+        <h3>A propos de la SAE...</h3>
+        <h5>Ce qui a été effectué</h5>
+        <p> TODO </p>
+        <h5>Le schéma du fonctionnement de notre projet</h5>
+        <img src="img/schema.png"/>
+        <h5>Les informations nécessaires au fonctionnement du projet</h5>
+        <p> TODO </p>
+        <h5>Autres précisions</h5>
+        <p> TODO </p>
+        <a href="https://github.com/dardenne8u/SAE_Application_Repartie">Lien vers le Github du projet</a>
+    </div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin=""></script>
-<script src="index.js" type="module"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    <script src="index.js" type="module"></script>
 </body>
 </html>
