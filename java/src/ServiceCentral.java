@@ -76,4 +76,7 @@ public class ServiceCentral implements InterfaceCentral {
       }
     }
 
+  public void setForwarder(ForwarderInterface forwarder) {
+    this.forwarder = forwarder;
+  }
 }
