@@ -1,15 +1,17 @@
 import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class ServiceCentral implements HttpHandler {
+public class ServiceCentral implements InterfaceCentral {
   private Map<String,Service> services = new HashMap<>();
+  private ForwarderInterface forwarder;
 
   @Override
   public void handle(HttpExchange request) throws IOException {
@@ -24,6 +26,7 @@ public class ServiceCentral implements HttpHandler {
     for(String s : request.getRequestHeaders().keySet()) {
       System.out.println(s + " : " + request.getRequestHeaders().get(s));
     }
+    System.out.println("");
   }
 
   public static void main(String[] args) {
@@ -44,7 +47,33 @@ public class ServiceCentral implements HttpHandler {
     server.start();
   }
 
+  @Override
+  public void RegisterForwarder(ForwarderInterface forwarder) throws RemoteException {
+    this.forwarder = forwarder;
+  }
+
   public void addService(String name, Service service) {
     services.put(name, service);
   }
+
+    public ServiceCentral() {
+      int port = 1099;
+      InterfaceCentral n = this;
+
+      Registry registry = null;
+      try {
+        registry = LocateRegistry.createRegistry(port);
+      } catch (Exception e) {
+        System.out.println("Erreur ici : " + e.getMessage());
+        System.exit(1);
+      }
+
+      try {
+        registry.rebind("Serv", n);
+      } catch (Exception e) {
+        System.out.println("Erreur la : " + e.getMessage());
+        System.exit(1);
+      }
+    }
+
 }
