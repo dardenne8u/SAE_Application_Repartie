@@ -82,6 +82,14 @@ public class Service {
             System.out.println(resto.getNom());
             System.out.println("====================================");
             System.out.println(resto.toJSON());
+            System.out.println("====================================");
+            try {
+                Connection con = DBConnection.getConnexion();
+                resto.reserverTable("[{\"idResa\":1,\"idRest\":1,\"nomClient\":\"Jean\",\"numTable\":\"1\",\"dateResa\":\"2023-06-20 19:36:55\",\"nbPersonnes\":69}]",con);
+                resto.modifierReservationTable("[{\"idResa\":1,\"idRest\":1,\"nomClient\":\"Jean\",\"numTable\":\"1\",\"dateResa\":\"2023-06-20 19:36:55\",\"nbPersonnes\":4}]",con);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

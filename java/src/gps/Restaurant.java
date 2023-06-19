@@ -1,5 +1,12 @@
 package gps;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class Restaurant extends Lieu {
     private int numTel;
 
@@ -34,5 +41,61 @@ public class Restaurant extends Lieu {
                 "        }\n" +
                 "    }\n" +
                 "}";
+    }
+
+    public void reserverTable(String json, Connection connection) {
+        JSONArray jsonArray = new JSONArray(json);
+        System.out.println(jsonArray);
+
+        JSONObject jsonObject = jsonArray.getJSONObject(0);
+        System.out.println(jsonObject);
+        int idResa = jsonObject.getInt("idResa");
+        int idRest = jsonObject.getInt("idRest");
+        String nomClient = jsonObject.getString("nomClient");
+        int numTable = jsonObject.getInt("numTable");
+        String date = jsonObject.getString("dateResa");
+        int nbPersonnes = jsonObject.getInt("nbPersonnes");
+
+        String formatedDate = "STR_TO_DATE('"+date+"', '%Y-%m-%d %T')";
+        String query = "INSERT INTO Reservations (idResa, idRest, nomClient, numTable, dateResa, nbPersonnes) VALUES (" + idResa + ", " + idRest + ", '" + nomClient + "', " + numTable + ", " + formatedDate + ", " + nbPersonnes + ");";
+        System.out.println(query);
+
+        try {
+            System.out.println("Creating statement...");
+            Statement stmt = connection.createStatement();
+            System.out.println("Executing query...");
+            stmt.executeUpdate(query);
+            System.out.println("Query executed");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void modifierReservationTable(String json, Connection connection) {
+        JSONArray jsonArray = new JSONArray(json);
+        System.out.println(jsonArray);
+
+        JSONObject jsonObject = jsonArray.getJSONObject(0);
+        System.out.println(jsonObject);
+        int idResa = jsonObject.getInt("idResa");
+        int idRest = jsonObject.getInt("idRest");
+        String nomClient = jsonObject.getString("nomClient");
+        int numTable = jsonObject.getInt("numTable");
+        String date = jsonObject.getString("dateResa");
+        int nbPersonnes = jsonObject.getInt("nbPersonnes");
+
+        String formatedDate = "STR_TO_DATE('"+date+"', '%Y-%m-%d %T')";
+        String query = "UPDATE Reservations SET idRest = " + idRest + ", nomClient = '" + nomClient + "', numTable = " + numTable + ", dateResa = " + formatedDate + ", nbPersonnes = " + nbPersonnes + " WHERE idResa = " + idResa + ";";
+        System.out.println(query);
+
+        try {
+            System.out.println("Creating statement...");
+            Statement stmt = connection.createStatement();
+            System.out.println("Executing query...");
+            stmt.executeUpdate(query);
+            System.out.println("Query executed");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 }
