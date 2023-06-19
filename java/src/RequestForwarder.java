@@ -1,4 +1,3 @@
-import com.sun.net.httpserver.HttpExchange;
 import org.json.JSONObject;
 
 import javax.net.ssl.SSLContext;
@@ -85,7 +84,7 @@ public class RequestForwarder extends HttpClient implements ForwarderInterface {
     }
 
     @Override
-    public String forwardRequest(String url, String method, HttpExchange request) {
+    public String forwardRequest(String url, String data) {
         String l = null;
         try {
             l = new JSONObject(this.send(
