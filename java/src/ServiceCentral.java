@@ -26,49 +26,46 @@ public class ServiceCentral implements HttpHandler, InterfaceCentral {
         String body = new String(bis.readAllBytes());
 
 
-        System.out.println(body);
-        String response = redirection("", request.getRequestMethod(), body);
+        JSONObject response = null;
+        try {
+            response = redirection(request.getHttpContext().getPath(), body);
+            request.sendResponseHeaders(200, response.toString().length());
 
-
-        request.sendResponseHeaders(200, response.length());
+        } catch (ServiceNotAvailableException e) {
+            request.sendResponseHeaders(404, e.getMessage().length());
+            response = new JSONObject("{\"error\":\"" + e.getMessage() + "\"}");
+        }
         OutputStream os = request.getResponseBody();
-        os.write(response.getBytes());
+        os.write(response.toString().getBytes());
         os.close();
     }
 
-    private String redirection(String path, String method, String stringData) {
-        String response;
+    private JSONObject redirection(String path, String stringData) throws ServiceNotAvailableException {
+        JSONObject response;
 
         path = path.substring(BEGIN_PATH.length());
         JSONObject data = new JSONObject(stringData);
 
-        if (method.equals("GET"))
-            response = getRequest(path, data);
-        else if (method.equals("POST"))
-            response = postRequest(path, data);
-        else
-            response = "Method not allowed";
-
-        return response;
-    }
-    private String postRequest( String path, JSONObject data) {
         switch(path) {
             case "/search":
-
+                try {
+                    response = services.get("forwarder").request(data);
+                } catch (RemoteException e) {
+                    throw new ServiceNotAvailableException("The forwarder service is not available");
+                }
                 break;
             case "/restaurant":
-
+                try {
+                    response = services.get("database").request(data);
+                } catch (RemoteException e) {
+                    throw new ServiceNotAvailableException("The database service is not available");
+                }
                 break;
+            default:
+                throw new ServiceNotAvailableException("The service " + path + " is not available");
         }
 
-        return "";
-    }
-
-    private String getRequest( String path, JSONObject data) {
-        switch(path) {
-
-        }
-        return "";
+        return response;
     }
 
 
