@@ -11,13 +11,14 @@ div{
 }
 
 #map{
-    width: 100%;
+    width: 96%;
     height : 100%;
     padding-bottom: 50%;
 }
 
-label{
-    padding: 1%;
+.formfield{
+    width: 100%;
+    text-align: right;
 }
 
 /*Règles pour la barre en haut */

@@ -1,6 +1,9 @@
 import velibs from "./js/velibs.js";
 import circulation from "./js/circulation.js";
 
+let urlServeur = "https://webetu.iutnc.univ-lorraine.fr/www/dardenne8u/SAE_ApplicationRepartie/";
+let port = "8080";
+
 let map = L.map('map').setView([48.691173, 6.184768], 13);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
