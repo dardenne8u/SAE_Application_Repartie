@@ -1,0 +1,33 @@
+[
+  {
+    "action": "select",
+    "data": {
+      "table": "restaurant"
+    }
+  },
+  {
+    "action": "update",
+    "data": {
+      "idRestaurant": 0,
+      "nomClient": "test",
+        "nbPersonnes": 2,
+        "dateReservation": "2020-01-01 22:11:00"
+    }
+  },
+  {
+    "action": "delete",
+    "data": {
+      "idResa": 1
+    }
+  },
+  {
+    "action": "update",
+    "data": {
+      "idReservation": 1,
+      "idRestaurant": 0,
+      "nomClient": "test",
+      "nbPersonnes": 2,
+      "dateResa": "2020-01-01 22:11:00"
+    }
+  }
+]
