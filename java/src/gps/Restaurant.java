@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Restaurant extends Lieu {
+public class Restaurant extends Lieu implements InterfaceRestaurant{
     private int numTel;
 
     public Restaurant(int id, String nom, Coordonnees coordonnees, int codePostal, String adresse, String num, String ville) {

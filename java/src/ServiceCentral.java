@@ -15,10 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ServiceCentral implements HttpHandler, InterfaceCentral {
-
     private static final String BEGIN_PATH = "/sae";
-
     private Map<String, InterfaceService> services = new HashMap<String, InterfaceService>();
+    //private ForwarderInterface forwarder;
 
     @Override
     public void handle(HttpExchange request) throws IOException {
@@ -72,15 +71,15 @@ public class ServiceCentral implements HttpHandler, InterfaceCentral {
     }
 
 
-    public static void main(String[] args) {
-        HttpServer server = null;
-        try {
-            // Creation de serveur (c'est pas dit dans la methode sur le port 8080)
-            server = HttpServer.create(new InetSocketAddress(8080), 0);
-        } catch (IOException e) {
-            System.out.println("The port is already used");
-            System.exit(1);
-        }
+  public static void main(String[] args) {
+    HttpServer server = null;
+    try {
+      // Creation de serveur (c'est pas dit dans la methode sur le port 8080)
+      server = HttpServer.create(new InetSocketAddress(8080), 0);
+    } catch (IOException e) {
+      System.out.println("The port is already used");
+      System.exit(1);
+    }
 
         // Ajoute un contexte donc en gros : http://localhost:8080/sae
         server.createContext(BEGIN_PATH, new ServiceCentral());
