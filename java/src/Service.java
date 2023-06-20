@@ -1,6 +1,3 @@
-import gps.Coordonnees;
-import gps.Restaurant;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

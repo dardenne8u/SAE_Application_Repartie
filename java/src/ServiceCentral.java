@@ -16,7 +16,8 @@ import java.util.Map;
 
 public class ServiceCentral implements HttpHandler, InterfaceCentral {
     private static final String BEGIN_PATH = "/sae";
-    private Map<String, InterfaceService> services = new HashMap<String, InterfaceService>();
+    private Map<String, InterfaceService> services = new HashMap<>();
+    private HashMap<String, Lieu> lieux = new HashMap<>();
     //private ForwarderInterface forwarder;
 
     @Override
@@ -118,5 +119,9 @@ public class ServiceCentral implements HttpHandler, InterfaceCentral {
     @Override
     public void registerService(String name, InterfaceService service) throws RemoteException {
         services.put(name, service);
+    }
+
+    public void registerLieux(String name, Lieu service) throws RemoteException {
+        lieux.put(name, service);
     }
 }

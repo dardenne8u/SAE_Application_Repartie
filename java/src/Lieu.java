@@ -1,6 +1,4 @@
-package gps;
-
-public abstract class Lieu {
+public abstract class Lieu implements InterfaceService {
     protected int id;
     protected String nom;
     protected Coordonnees coordonnees;

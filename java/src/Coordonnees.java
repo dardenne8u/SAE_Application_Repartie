@@ -1,5 +1,3 @@
-package gps;
-
 public class Coordonnees {
     private double latitude;
     private double longitude;
