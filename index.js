@@ -7,6 +7,12 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+map.on('click', function(ev){
+    let latlng = map.mouseEventToLatLng(ev.originalEvent);
+    document.querySelector("#lat").value=latlng.lat;
+    document.querySelector("#lon").value=latlng.lng;
+});
+
 
 
 const markers = [];
