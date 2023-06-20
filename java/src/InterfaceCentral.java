@@ -2,7 +2,7 @@ import com.sun.net.httpserver.HttpHandler;
 
 import java.rmi.Remote;
 
-public interface InterfaceCentral extends HttpHandler, Remote {
+public interface InterfaceCentral extends Remote {
 
-    public void RegisterForwarder(ForwarderInterface forwarder) throws java.rmi.RemoteException;
+    void registerService(String name,InterfaceService service) throws java.rmi.RemoteException;
 }

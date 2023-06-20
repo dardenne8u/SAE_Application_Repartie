@@ -10,9 +10,8 @@ public class Service {
     Statement stmt;
     String name;
 
-    public Service(ServiceCentral serviceCentral, String name) {
+    public Service(String name) {
         this.name = name;
-        serviceCentral.addService(name,this);
 
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/SAE", "root", "root");
@@ -73,8 +72,7 @@ public class Service {
     }
 
     public static void main(String[] args) {
-        ServiceCentral serviceCentral = new ServiceCentral();
-        Service service = new Service(serviceCentral, "Service1");
+        Service service = new Service("Service1");
 
         List<Restaurant> restos = service.getRestaurants();
 
