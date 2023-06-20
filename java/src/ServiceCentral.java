@@ -53,10 +53,18 @@ public class ServiceCentral implements HttpHandler, InterfaceCentral {
     private String postRequest( String path, JSONObject data) {
         switch(path) {
             case "/search":
-
+                try {
+                    services.get("forwarder").request(data);
+                } catch (RemoteException e) {
+                    System.out.println("The forwarder service is not available");
+                }
                 break;
             case "/restaurant":
-
+                try {
+                    services.get("database").request(data);
+                } catch (RemoteException e) {
+                    System.out.println("The database service is not available");
+                }
                 break;
         }
 
