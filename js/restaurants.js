@@ -1,5 +1,18 @@
 const API = "https://webetu.iutnc.univ-lorraine.fr/dardenne8u/SAERepartie/";
 
+const recupererRestaurants = async () => {
+    let promise = await fetch(`${URL}/database`, {
+        method: "POST",
+        body: `{ "action": "select", "data": { "table":"restaurant"}}`
+    });
+
+    if (!promise.ok) {
+        console.log("Error");
+        return;
+    }
+
+    return await promise.json();
+}
 
 const forwarder = async () => {
     let promise = await fetch(`${API}/forwarder`, {
@@ -14,7 +27,7 @@ const forwarder = async () => {
 
     let response = await promise.json();
     console.log(response);
-    return reponse;
+    return response;
 }
 
 const reserverRestaurant = async (idRestau, nomClient, nbPersonnes) => {
@@ -36,5 +49,6 @@ const reserverRestaurant = async (idRestau, nomClient, nbPersonnes) => {
 
 export default {
     forwarder,
-    reserverRestaurant
+    reserverRestaurant,
+    recupererRestaurants
 }
