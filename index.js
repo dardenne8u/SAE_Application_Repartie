@@ -118,9 +118,13 @@ const printCirculationEvents = async () => {
     });
 }
 
-printStationsInformation()
-    .then(()=>printStationsStatus());
-
-printCirculationEvents();
-printRestaurants();
-printEtablissements();
+const resetMarkers = () => {
+    document.location.reload();
+}
+document.querySelector('#restaurant').onclick = printRestaurants;
+document.querySelector("#etablissement").onclick = printEtablissements;
+document.querySelector("#circulation").onclick = printCirculationEvents;
+document.querySelector("#station").onclick = () => {
+    printStationsInformation().then(()=>printStationsStatus());
+}
+document.querySelector("#reset").onclick = resetMarkers;
