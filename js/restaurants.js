@@ -1,4 +1,6 @@
-const API = "https://webetu.iutnc.univ-lorraine.fr/dardenne8u/SAERepartie";
+const IP = localhost;
+const PORT = 8080;
+const API = `https://${IP}:${PORT}/sae/database`;
 
 const recupererRestaurants = async () => {
     let promise = await fetch(`${URL}/database`, {
