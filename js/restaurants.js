@@ -1,11 +1,11 @@
-const IP = "localhost";
+const IP = "100.64.80.74";
 const PORT = 8080;
 const API = `https://${IP}:${PORT}/sae/database`;
 
 const recupererRestaurants = async () => {
     let promise = await fetch(`${URL}/database`, {
         method: "POST",
-        body: `{ "action": "select", "data": { "table":"restaurant"}}`
+        body: `{ "action": "select", "data": { "table":"restaurant"} }`
     });
 
     if (!promise.ok) {

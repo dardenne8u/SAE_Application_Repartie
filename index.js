@@ -86,7 +86,7 @@ const printEtablissements = async () => {
     let icone = new LeafIcon({iconUrl: './img/yellowicon.png'});
 
     etablissements.forEach(etablissement => {
-        let marker = L.marker([etablissement.lat, etablissement.lon], {icon: icone}).addTo(map);
+        let marker = L.marker([etablissement.coorddonnees[0], etablissement.coorddonnees[1]], {icon: icone}).addTo(map);
         marker.bindPopup(etablissement.fields.uo_lib, {color: 'green'});
         markersEtablissements.push({
             id: etablissement.recordid,
