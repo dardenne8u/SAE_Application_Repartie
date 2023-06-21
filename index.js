@@ -1,6 +1,7 @@
 import velibs from "./js/velibs.js";
 import circulation from "./js/circulation.js";
 import restaurants from "./js/restaurants.js";
+import forwarder from "./js/forwarder";
 
 let urlServeur = "https://webetu.iutnc.univ-lorraine.fr/www/dardenne8u/SAE_ApplicationRepartie/";
 let port = "8080";

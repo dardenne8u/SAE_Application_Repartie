@@ -14,22 +14,6 @@ const recupererRestaurants = async () => {
     return await promise.json();
 }
 
-const forwarder = async () => {
-    let promise = await fetch(`${API}/forwarder`, {
-        method: "POST",
-        body: '{ "url" : "https://data.enseignementsup-recherche.gouv.fr//explore/dataset/fr-esr-principaux-etablissements-enseignement-superieur/download?format=json&amp;timezone=Europe/Berlin&amp;use_labels_for_header=false" }',
-    });
-
-    if (!promise.ok) {
-        console.log("Error");
-        return;
-    }
-
-    let response = await promise.json();
-    console.log(response);
-    return response;
-}
-
 const reserverRestaurant = async (idRestau, nomClient, nbPersonnes) => {
     let dateReserv = new Date().toISOString().slice(0, 19).replace('T', ' ');
     let promise = await fetch(`${URL}/database`, {
@@ -48,7 +32,6 @@ const reserverRestaurant = async (idRestau, nomClient, nbPersonnes) => {
 
 
 export default {
-    forwarder,
     reserverRestaurant,
     recupererRestaurants
 }
