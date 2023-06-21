@@ -141,6 +141,6 @@ window.onload = () => {
     document.getElementById('resto').onchange = restaurants.onchange;
     document.getElementById('validateAjout').onclick = function(){
         console.log("test");
-        restaurants.reserverRestaurant(1,document.getElementById('nomCli').value,document.getElementById('nbPers').value);
+        restaurants.reserverRestaurant(document.getElementById("selctRest").value,document.getElementById('nomCli').value,document.getElementById('nbPers').value);
     };
 }
