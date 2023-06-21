@@ -26,23 +26,21 @@
 
     <div id="formulaire">
         <form method="post">
-            <h3>Réserver un restaurant</h3>
-            <div class="formfield">
-                <label id="nomRestaurant">
-                    Veuillez cliquer sur un popup de restaurant pour le réserver.
-                </label>
-            </div>
-            <input type="hidden" id="idRes"/>
+            <h3>Réserver une table</h3>
+            <select id="resto">
+                <option value="0">Choisir un restaurant</option>
+
+            </select>
             <div class="formfield" id="nomCli">
                 <label>
                     Nom du client :
-                    <input type="text" placeholder="Téléphone"/>
+                    <input type="text"/>
                 </label>
             </div>
             <div class="formfield" id="nbPers">
                 <label>
                     Nombre de personnes :
-                    <input type="number" placeholder="Nom"/>
+                    <input type="number"/>
                 </label>
             </div>
             <input type="hidden" id="lat" readonly/>

@@ -14,14 +14,25 @@
 
     <div id="apropos">
         <h3>A propos de la SAE...</h3>
-        <h5>Ce qui a été effectué</h5>
-        <p> TODO </p>
+        <u><b>Ce qui a été effectué</b></u>
+        <p>Afin d'effectuer des requêtes à l'API et à la BDD, la classe Server que nous avons codée sert de Proxy</p>
+        <u><b>Accéder aux données bloquées :</b></u>
+        <p> Afin d'accéder aux données bloquées, nous avons codé un ServiceBlockedData qui contient une classe Forwarder qui permet de faire intermédiaire entre le serveur n'ayant pas accès à l'API et l'API.</p>
+        <u><b>Accéder à la BDD :</b></u>
+        <p> Afin d'accéder à la Base De Données, nous avons codé un ServiceDataBase qui contient une classe ServiceDB qui permet de faire des requêtes JDBC à une BDD sur le serveur Oracle de l'IUT.</p>
         <h5>Le schéma du fonctionnement de notre projet</h5>
-        <img src="img/schema.png"/>
-        <h5>Les informations nécessaires au fonctionnement du projet</h5>
-        <p> Pour faire fonctionner notre projet, nous avons utilisé : </p>
-        <h5>Autres précisions</h5>
-        <p> TODO </p>
+        <img src="../img/Schema_Architecture.png"/>
+        <br>
+        <u><b>Les informations nécessaires au fonctionnement du projet</b></u>
+        <p> Pour faire fonctionner notre projet, il faut : </p>
+        <ul>
+            <li>Lancer Serveur.jar sur une machine</li>
+            <li>Lancer le Forwarder.jar avec l'IP du serveur en args</li>
+            <li>Lancer le Bd.jar avec l'IP du serveur en args</li>
+            <a href = "https://webetu.iutnc.univ-lorraine.fr/www/dardenne8u/SAE_ApplicationRepartie/"><li>Accéder au site sur Webetu</li></a>
+        </ul>
+        <u><b>Autres précisions</b></u>
+        <p> Afin d'utiliser notre projet, vous pouvez lancer les  </p>
         <a href="https://github.com/dardenne8u/SAE_Application_Repartie">Lien vers le Github du projet</a>
         <a href="../index.html"><p>retour</p></a>
     </div>
