@@ -9,13 +9,17 @@
           crossorigin=""/>
     <link rel="stylesheet" href="css/global.css"/>
 </head>
+
 <body>
     <div class="topnav">
         <a class="active" href="#map">La map</a>
         <a href="#formulaire">Ajouter un restaurant</a>
         <a href="#apropos">A propos de la SAE...</a>
     </div>
-    <h3>La map</h3>
+
+    <div>
+        <h3>La map</h3>
+    </div>
     <div id="map">
 
     </div>
@@ -23,45 +27,45 @@
     <div id="formulaire">
         <form action="" method="post">
             <h3>Ajouter un restaurant</h3>
-            <div>
-                <label class="formfield">
+            <div class="formfield">
+                <label>
                     Nom du restaurant :
                     <input type="text" placeholder="Nom"/>
                 </label>
             </div>
-            <div>
-                <label class="formfield">
+            <div class="formfield">
+                <label>
                     Téléphone du restaurant :
                     <input type="tel" placeholder="Téléphone"/>
                 </label>
             </div>
-            <div>
-                <label class="formfield">
+            <div class="formfield">
+                <label>
                     Adresse du restaurant :
                     <input type="text" placeholder="Adresse"/>
                 </label>
             </div>
-            <div>
-                <label class="formfield">
+            <div class="formfield">
+                <label>
                     Code postal de la ville du restaurant :
                     <input type="number" placeholder="Code postal"/>
                 </label>
             </div>
-            <div>
-                <label class="formfield">
+            <div class="formfield">
+                <label>
                     Ville du restaurant :
                     <input type="text" placeholder="Ville"/>
                 </label>
             </div>
-            <div>
-                <label class="formfield">
+            <div class="formfield">
+                <label>
                     Pour enregistrer un restaurant, vous devez cliquer sur la map.
                 </label>
             </div>
             <input type="hidden" id="lat" readonly/>
             <input type="hidden" id="lon" readonly/>
 
-            <button id="validate">Valider</button>
+            <button id="validateAjout">Valider</button>
         </form>
     </div>
 
