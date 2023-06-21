@@ -65,10 +65,10 @@ const printRestaurants = async () => {
     let icone = new LeafIcon({iconUrl: './img/greenicon.png'});
 
     restaur.forEach(restaurant => {
-        let marker = L.marker([restaurant.lat, restaurant.lon], {icon: icone}).addTo(map);
-        marker.bindPopup(restaurant.name, {color: 'green'});
+        let marker = L.marker([restaurant.LATITUDE, restaurant.LONGITUDE], {icon: icone}).addTo(map);
+        marker.bindPopup(restaurant.NOM, {color: 'green'});
         markersRestau.push({
-            id: restaurant.id,
+            id: restaurant.ID,
             marker: marker
         });
     });
@@ -87,9 +87,9 @@ const printEtablissements = async () => {
 
     etablissements.forEach(etablissement => {
         let marker = L.marker([etablissement.lat, etablissement.lon], {icon: icone}).addTo(map);
-        marker.bindPopup(etablissement.name, {color: 'green'});
+        marker.bindPopup(etablissement.fields.uo_lib, {color: 'green'});
         markersEtablissements.push({
-            id: etablissement.id,
+            id: etablissement.recordid,
             marker: marker
         });
     });
