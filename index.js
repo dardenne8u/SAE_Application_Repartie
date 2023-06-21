@@ -18,6 +18,11 @@ map.on('click', function(ev){
     document.querySelector("#lon").value=latlng.lng;
 });
 
+let restaurants = await fetch(urlServeur, {
+    method: 'POST',
+    body: '{ "action":"select", "data": {"table":"restaurant" } }'
+});
+
 document.querySelector('#validateAjout').onclick = function(){
     restaurants.reserverRestaurant(document.querySelector('#idRes').value,document.querySelector('#nomCli').value,document.querySelector('#nbPers').value);
 };
@@ -86,12 +91,14 @@ const printEtablissements = async () => {
     let icone = new LeafIcon({iconUrl: './img/yellowicon.png'});
 
     etablissements.forEach(etablissement => {
-        let marker = L.marker([etablissement.geometry.coordinates[0], etablissement.geometry.coordinates[1]], {icon: icone}).addTo(map);
-        marker.bindPopup(etablissement.fields.uo_lib, {color: 'green'});
-        markersEtablissements.push({
-            id: etablissement.recordid,
-            marker: marker
-        });
+        if (etablissement != null) {
+            let marker = L.marker([etablissement.geometry.coordinates[1], etablissement.geometry.coordinates[0]], {icon: icone}).addTo(map);
+            marker.bindPopup(etablissement.fields.uo_lib, {color: 'green'});
+            markersEtablissements.push({
+                id: etablissement.recordid,
+                marker: marker
+            });
+        }
     });
 }
 
