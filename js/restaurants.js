@@ -1,4 +1,4 @@
-const IP = localhost;
+const IP = "localhost";
 const PORT = 8080;
 const API = `https://${IP}:${PORT}/sae/database`;
 
