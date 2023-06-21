@@ -45,6 +45,19 @@ const printStationsStatus = async () => {
     });
 }
 
+const printRestaurants = async () => {
+    let restaurants = await velibs.getRestaurants();
+
+    restaurants.forEach(restaurant => {
+        let marker = L.marker([restaurant.lat, restaurant.lon]).addTo(map);
+        marker.bindPopup(restaurant.name, {color: 'green'});
+        markers.push({
+            id: restaurant.id,
+            marker: marker
+        });
+    });
+}
+
 const printCirculationEvents = async () => {
     let circuData = await circulation.getCirculationData();
     console.log(circuData);
@@ -73,3 +86,4 @@ printStationsInformation()
     .then(()=>printStationsStatus());
 
 printCirculationEvents();
+printRestaurants();
