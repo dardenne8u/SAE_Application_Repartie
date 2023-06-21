@@ -27,6 +27,7 @@ document.querySelector('#validateAjout').onclick = function(){
 const markers = [];
 const markersCircu = [];
 const markersRestau = [];
+const markersEtablissements = [];
 
 const printStationsInformation = async () => {
     let stations = await velibs.getStationsInformation();
@@ -53,7 +54,7 @@ const printStationsStatus = async () => {
 }
 
 const printRestaurants = async () => {
-    let restaurants = await restaurants.recupererRestaurants();
+    let restaur = await restaurants.recupererRestaurants();
     let LeafIcon = L.Icon.extend({
         options: {
             iconSize:     [50, 50],
@@ -63,11 +64,32 @@ const printRestaurants = async () => {
     });
     let icone = new LeafIcon({iconUrl: './img/greenicon.png'});
 
-    restaurants.forEach(restaurant => {
+    restaur.forEach(restaurant => {
         let marker = L.marker([restaurant.lat, restaurant.lon], {icon: icone}).addTo(map);
         marker.bindPopup(restaurant.name, {color: 'green'});
         markersRestau.push({
             id: restaurant.id,
+            marker: marker
+        });
+    });
+}
+
+const printEtablissements = async () => {
+    let etablissements = await forwarder.forwarder();
+    let LeafIcon = L.Icon.extend({
+        options: {
+            iconSize:     [50, 50],
+            iconAnchor:   [26, 47],
+            popupAnchor:  [0, -45]
+        }
+    });
+    let icone = new LeafIcon({iconUrl: './img/yellowicon.png'});
+
+    etablissements.forEach(etablissement => {
+        let marker = L.marker([etablissement.lat, etablissement.lon], {icon: icone}).addTo(map);
+        marker.bindPopup(etablissement.name, {color: 'green'});
+        markersEtablissements.push({
+            id: etablissement.id,
             marker: marker
         });
     });
@@ -101,3 +123,4 @@ printStationsInformation()
 
 printCirculationEvents();
 printRestaurants();
+printEtablissements();
