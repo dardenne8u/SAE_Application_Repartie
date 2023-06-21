@@ -1,4 +1,4 @@
-const API = "https://webetu.iutnc.univ-lorraine.fr/dardenne8u/applications/myapp";
+const API = "https://webetu.iutnc.univ-lorraine.fr/dardenne8u/SAERepartie/";
 
 const getRestaurantsData = async () => {
     let response = await fetch(API);
