@@ -17,14 +17,15 @@ map.on('click', function(ev){
     document.querySelector("#lon").value=latlng.lng;
 });
 
-document.querySelector('#validateAjout').on('click', function(ev){
+document.querySelector('#validateAjout').onclick = function(){
     restaurants.reserverRestaurant(document.querySelector('#idRes').value,document.querySelector('#nomCli').value,document.querySelector('#nbPers').value);
-});
+};
 
 
 
 const markers = [];
 const markersCircu = [];
+const markersRestau = [];
 
 const printStationsInformation = async () => {
     let stations = await velibs.getStationsInformation();
@@ -51,12 +52,20 @@ const printStationsStatus = async () => {
 }
 
 const printRestaurants = async () => {
-    let restaurants = await velibs.getRestaurants();
+    let restaurants = await restaurants.recupererRestaurants();
+    let LeafIcon = L.Icon.extend({
+        options: {
+            iconSize:     [50, 50],
+            iconAnchor:   [26, 47],
+            popupAnchor:  [0, -45]
+        }
+    });
+    let icone = new LeafIcon({iconUrl: './img/greenicon.png'});
 
     restaurants.forEach(restaurant => {
-        let marker = L.marker([restaurant.lat, restaurant.lon]).addTo(map);
+        let marker = L.marker([restaurant.lat, restaurant.lon], {icon: icone}).addTo(map);
         marker.bindPopup(restaurant.name, {color: 'green'});
-        markers.push({
+        markersRestau.push({
             id: restaurant.id,
             marker: marker
         });
@@ -65,7 +74,6 @@ const printRestaurants = async () => {
 
 const printCirculationEvents = async () => {
     let circuData = await circulation.getCirculationData();
-    console.log(circuData);
     let LeafIcon = L.Icon.extend({
         options: {
             iconSize:     [50, 50],
