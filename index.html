@@ -25,41 +25,21 @@
     </div>
 
     <div id="formulaire">
-        <form action="" method="post">
-            <h3>Ajouter un restaurant</h3>
-            <div class="formfield">
+        <form method="post">
+            <h3>Réserver un restaurant</h3>
+            <p>Restaurant sélectionné : </p>
+            <p id="nomRes"></p>
+            <input type="hidden" id="idRes"/>
+            <div class="formfield" id="nomCli">
                 <label>
-                    Nom du restaurant :
-                    <input type="text" placeholder="Nom"/>
+                    Nom du client :
+                    <input type="text" placeholder="Téléphone"/>
                 </label>
             </div>
-            <div class="formfield">
+            <div class="formfield" id="nbPers">
                 <label>
-                    Téléphone du restaurant :
-                    <input type="tel" placeholder="Téléphone"/>
-                </label>
-            </div>
-            <div class="formfield">
-                <label>
-                    Adresse du restaurant :
-                    <input type="text" placeholder="Adresse"/>
-                </label>
-            </div>
-            <div class="formfield">
-                <label>
-                    Code postal de la ville du restaurant :
-                    <input type="number" placeholder="Code postal"/>
-                </label>
-            </div>
-            <div class="formfield">
-                <label>
-                    Ville du restaurant :
-                    <input type="text" placeholder="Ville"/>
-                </label>
-            </div>
-            <div class="formfield">
-                <label>
-                    Pour enregistrer un restaurant, vous devez cliquer sur la map.
+                    Nombre de personnes :
+                    <input type="number" placeholder="Nom"/>
                 </label>
             </div>
             <input type="hidden" id="lat" readonly/>

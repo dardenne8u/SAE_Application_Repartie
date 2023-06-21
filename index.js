@@ -1,5 +1,6 @@
 import velibs from "./js/velibs.js";
 import circulation from "./js/circulation.js";
+import restaurants from "./js/restaurants";
 
 let urlServeur = "https://webetu.iutnc.univ-lorraine.fr/www/dardenne8u/SAE_ApplicationRepartie/";
 let port = "8080";
@@ -14,6 +15,10 @@ map.on('click', function(ev){
     let latlng = map.mouseEventToLatLng(ev.originalEvent);
     document.querySelector("#lat").value=latlng.lat;
     document.querySelector("#lon").value=latlng.lng;
+});
+
+document.querySelector('#validateAjout').on('click', function(ev){
+    let restaurants
 });
 
 
