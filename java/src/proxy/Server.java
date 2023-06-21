@@ -54,6 +54,7 @@ public class Server implements Proxy, HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         BufferedInputStream bis = new BufferedInputStream(exchange.getRequestBody());
         String body = new String(bis.readAllBytes());
+        System.out.println("bonjour");
         body = body.equals("") ? "{}" : body;
 
         exchange.getResponseHeaders().add("Content-Type", "application/json");
@@ -155,7 +156,7 @@ public class Server implements Proxy, HttpHandler {
             // initialise the keystore
             char[] password = "password".toCharArray();
             KeyStore ks = KeyStore.getInstance("JKS");
-            FileInputStream fis = new FileInputStream("C:/Users/natha/Desktop/cours IUT/s4/sae/SAE_Application_Repartie/java/src/proxy/testkey.jks");
+            FileInputStream fis = new FileInputStream("/users/home/miesch3u/sae prog rep/SAE_Application_Repartie/java/src/testkey.jks");
             ks.load(fis, password);
 
             // setup the key manager factory

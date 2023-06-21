@@ -16,9 +16,11 @@ public class ServiceDB implements Service {
     @Override
     public String request(String data) throws RemoteException {
         JSONObject jsonObject = new JSONObject(data);
+        System.out.println(jsonObject);
         switch(jsonObject.getString("action")) {
             case "select":
                 try {
+                    System.out.println("select");
                     return select(jsonObject.getJSONObject("data"));
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
@@ -26,6 +28,7 @@ public class ServiceDB implements Service {
                 }
             case "insert":
                 try {
+                    System.out.println("insert");
                     insert_reservation(jsonObject.getJSONObject("data"));
                     return new JSONObject("{ status: { action: insert, success: true } }").toString();
                 } catch (SQLException e) {
@@ -34,6 +37,7 @@ public class ServiceDB implements Service {
                 }
             case "delete":
                 try {
+                    System.out.println("delete");
                     remove_reservation(jsonObject.getJSONObject("data"));
                     return new JSONObject("{ status: { action: delete, success: true } }").toString();
                 } catch (SQLException e) {
@@ -42,6 +46,7 @@ public class ServiceDB implements Service {
                 }
             case "update":
                 try {
+                    System.out.println("update");
                     update_reservation(jsonObject.getJSONObject("data"));
                     return new JSONObject("{ status: { action: update, success: true } }").toString();
                 } catch (SQLException e) {
@@ -49,6 +54,7 @@ public class ServiceDB implements Service {
                     return new JSONObject("{ status: { action: insert, success: false } }").toString();
                 }
             default:
+                System.out.println("else");
                 return new JSONObject("{ status: \"action inconnu\" }").toString();
 
         }

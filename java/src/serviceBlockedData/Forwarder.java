@@ -2,6 +2,8 @@
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.ProxySelector;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -26,9 +28,12 @@ public class Forwarder implements Service {
 
     @Override
     public String request(String payload) throws RemoteException {
+        System.out.println("forwarding");
         JSONObject data = new JSONObject(payload);
-        HttpClient client = HttpClient.newHttpClient();
         String response = null;
+        ProxySelector proxy = ProxySelector.of(new InetSocketAddress("www-cache.iutnc.univ-lorraine.fr",3128));
+        System.out.println("connecting to proxy");
+        HttpClient client = HttpClient.newBuilder().proxy(proxy).build();
         try {
             HttpResponse<String> promise = client.send(
                     HttpRequest.newBuilder(
@@ -46,6 +51,7 @@ public class Forwarder implements Service {
     }
 
     public static void main(String[] args) {
+        System.out.println("new one");
         String server = "localhost";
         int port = 1099;
 
