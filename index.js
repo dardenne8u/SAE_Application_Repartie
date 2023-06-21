@@ -128,3 +128,8 @@ document.querySelector("#station").onclick = () => {
     printStationsInformation().then(()=>printStationsStatus());
 }
 document.querySelector("#reset").onclick = resetMarkers;
+
+
+window.onload = () => {
+    document.getElementById('resto').onchange = restaurants.onchange;
+}

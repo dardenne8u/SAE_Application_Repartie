@@ -36,10 +36,11 @@
     <div id="formulaire">
         <form method="post">
             <h3>Réserver une table</h3>
-            <select id="resto">
+            <select id="resto" value="reserver un restaurant">
                 <option value="0">Choisir un restaurant</option>
-
+                <option value="1" selected="true"></option>
             </select>
+            <div id="selctRest"></div>
             <div class="formfield" id="nomCli">
                 <label>
                     Nom du client :
@@ -65,5 +66,6 @@
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
             crossorigin=""></script>
     <script src="index.js" type="module"></script>
+    <script src="js/restaurants.js" type="module"></script>
 </body>
 </html>
