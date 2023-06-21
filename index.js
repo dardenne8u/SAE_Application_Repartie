@@ -18,7 +18,7 @@ map.on('click', function(ev){
 });
 
 document.querySelector('#validateAjout').on('click', function(ev){
-    let restaurants
+    restaurants.reserverRestaurant(document.querySelector('#idRes').value,document.querySelector('#nomCli').value,document.querySelector('#nbPers').value);
 });
 
 
