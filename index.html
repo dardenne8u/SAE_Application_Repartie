@@ -34,14 +34,12 @@
     </div>
 
     <div id="formulaire">
-        <form method="post" datatype="json" >
-            <h3>Réserver un restaurant</h3>
-            <div class="formfield">
-                <label id="nomRestaurant">
-                    Veuillez cliquer sur un popup de restaurant pour le réserver.
-                </label>
-            </div>
-            <input type="hidden" id="idRes"/>
+        <form method="post">
+            <h3>Réserver une table</h3>
+            <select id="resto">
+                <option value="0">Choisir un restaurant</option>
+
+            </select>
             <div class="formfield" id="nomCli">
                 <label>
                     Nom du client :
