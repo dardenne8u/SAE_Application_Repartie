@@ -155,7 +155,7 @@ public class Server implements Proxy, HttpHandler {
             // initialise the keystore
             char[] password = "password".toCharArray();
             KeyStore ks = KeyStore.getInstance("JKS");
-            FileInputStream fis = new FileInputStream("src/testkey.jks");
+            FileInputStream fis = new FileInputStream("java/src/testkey.jks");
             ks.load(fis, password);
 
             // setup the key manager factory
