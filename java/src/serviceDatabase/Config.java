@@ -1,4 +1,3 @@
-package serviceDatabase;
 
 public class Config {
 

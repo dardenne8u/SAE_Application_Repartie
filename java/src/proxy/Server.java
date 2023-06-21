@@ -1,4 +1,3 @@
-package proxy;
 
 import com.sun.net.httpserver.*;
 import org.json.JSONObject;

@@ -1,4 +1,3 @@
-package serviceDatabase;
 
 import org.json.JSONObject;
 

@@ -1,4 +1,3 @@
-package serviceBlockedData;
 
 import org.json.JSONObject;
 
